@@ -1,48 +1,17 @@
-var noOfButtons=document.querySelectorAll(".drum").length;
+var randomNumber1=Math.floor(Math.random()*6)+1;
+var randomImageSource="images/dice"+randomNumber1+".png";
 
-for(var i=0;i<noOfButtons;i++){
-    document.querySelectorAll("button")[i].addEventListener("click",function(){
-       var buttonAction=this.innerHTML;
-      makeSound(buttonAction);
-    });
-  
+document.querySelectorAll("img")[0].setAttribute("src",randomImageSource);
+var randomNumber2=Math.floor(Math.random()*6)+1;
+var randomImageSource1="images/dice"+randomNumber2+".png";
+document.querySelectorAll("img")[1].setAttribute("src",randomImageSource1);
+if(randomNumber1>randomNumber2){
+    document.querySelector("h1").innerHTML="Player1 wins!!"
 }
+else if(randomNumber2>randomNumber1){
+    document.querySelector("h1").innerHTML="Player2 wins!!"
 
-document.addEventListener("keydown",function(event){
-    makeSound(event.key);
-});
-function makeSound(key){
-    switch(key){
-        case("w"):
-        var tom1=new Audio("sounds/tom-1.mp3");
-        tom1.play();
-        break;
-        case("a"):
-        var tom1=new Audio("sounds/tom-2.mp3");
-        tom1.play();
-        break;
-        case("s"):
-        var tom1=new Audio("sounds/tom-3.mp3");
-        tom1.play();
-        break;
-        case("d"):
-        var tom1=new Audio("sounds/tom-4.mp3");
-        tom1.play();
-        break;
-        case("j"):
-        var tom1=new Audio("sounds/crash.mp3");
-        tom1.play();
-        break;
-        case("k"):
-        var tom1=new Audio("sounds/kick-bass.mp3");
-        tom1.play();
-        break;
-        case("l"):
-        var tom1=new Audio("sounds/snare.mp3");
-        tom1.play();
-        break;
-        default:
-            console.log(buttonAction);
-
-    }
+}
+else if(randomNumber1===randomNumber2){
+    document.querySelector("h1").innerHTML="Draw!";
 }
